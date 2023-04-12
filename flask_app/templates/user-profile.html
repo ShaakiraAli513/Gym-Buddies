@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+</head>
+<body>
+    <div style="display:flex; margin-bottom: 45px; margin-left: 10px; margin-top: 35px;">
+        <div style="display: inline-block; width:900px; ">
+            <div style="margin-bottom: 10px; margin-left: 25px;">
+                <a href="/logout"><h5>Logout</h5></a>
+            </div>
+        </div>
+            <div  style="display: inline-flex; justify-content: space-around; width: 400px;">
+                <a href="/dashboard"><h5>Back to Dashboard</h5></a>
+                <!-- <a href="/Veiw-profile"><b>Veiw Profile</b></a> -->
+            </div>
+    </div>
+    <div style="width:auto; background-color:  blue;margin-bottom: 60px;">
+        <h1 style="margin-left: 100px; color:rgb(105, 147, 247); font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: left; margin-right: 50px;">Hi, {{logged_in_user.first_name}} {{logged_in_user.last_name}}!!!</h1>
+        <h1 style="margin-left: 100px; color:rgb(105, 147, 247); font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; text-align: left;">Welcome to Your Profile Page!</h1>
+    </div>
+    <div>
+        <h1 style="text-decoration-line: underline; text-align: center; margin-bottom: 45px;"><b>View your Meet-ups Below</b></h1>
+    </div>
+    <!-- <div style="display: inline-flex; margin-left: 100px;">
+        <div style="margin-right: 15px;">
+            <h4>Age:</h4>
+        </div>
+        <div>
+            <h4>user age</h4>
+        </div>
+    </div> -->
+    <div style="margin:auto; width: 800px; padding: 15px; background-color:rgb(121, 116, 126); border-radius: 5px;">
+        <div style="color: rgb(0, 0, 0);background-color: rgb(255, 255, 255); height:300px; overflow:hidden; overflow-y:scroll; margin-bottom: 20px;">
+            <div style="word-wrap: 10px; text-overflow: ellipsis; display: flex; justify-content: space-between;">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Gym</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Meet-up Info</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for a_buddy in all_buds %}
+                        <tr>
+                            <td scope="row">{{a_buddy.gym_name}}</th>
+                            <td scope="row">{{a_buddy.meet_date.strftime("%m/%d/%Y")}}</td>
+                            <td scope="row"> 
+                                {% if a_buddy.user_id == session['user_id'] %}
+                                <a href="view-meet-up/{{a_buddy.id}}/{{a_buddy.user_id}}" style="margin-right: 15px;">view</a>
+                                <a href="/edit-meet-up/{{a_buddy.id}}" style="margin-right: 15px;">edit</a>
+                                <a href="/delete-meetup/{{a_buddy.id}}" style="margin-right: 15px;">delete</a>
+                                
+                                {% else %} 
+                                <a href="/view-meet-up/{{a_buddy.id}}" style="margin-right: 15px;">view</a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            
+            </div>
+        </div>
+    </div>

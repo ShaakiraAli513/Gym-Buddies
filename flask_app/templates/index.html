@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Buddies</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+</head>
+
+<body style="background-color: rgb(250, 245, 241);">
+    <div style="display:flex; margin-bottom: 75px;">
+        <div style="display: inline-block;">
+            <h1 style="color:rgb(116, 135, 129); font-family:fantasy; margin-right: 475px; text-decoration: rgba(0, 0, 0, 0.91);">GymBuddies.com</h1>
+            <h5><b>Making the Gym a less scary place, one bud at a time</b></h5>
+        </div>
+        <div style="text-align:left; padding-right: 20px;">
+            <div style="display: inline-flex; justify-content: space-around; width: 200px; text-align:center;margin-bottom: 5px;">
+                <p><b>Returning Gym Bud?</b></p>
+            </div>
+            <div  style="width: 450px; padding-right: 20px;">
+                {% with messages = get_flashed_messages() %}
+                <!-- declare a variable called messages -->
+                {% if messages %}
+                <!-- check if there are any messages -->
+                {% for message in messages %}
+                <!-- loop through the messages -->
+                <p style="text-align: center; color: rgb(255, 0, 0)"><b>{{message}}</b></p> 
+                <!-- display each message in a paragraph tag -->
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+                    <form action="/return-user" method="post">
+                        <div class="signup-form" style="margin-bottom: 15px; display: inline-flex; justify-content: space-between">
+                        <label for="return_email"><b>Email</b></label>
+                        <input type="email" name="return_email" style="margin-right:5px; margin-left: 3px;border-radius: 10px;">
+                        <label for="return_password"><b>Password</b></label>
+                        <input type="password" id="return_password" name="return_password" style="margin-left: 3px;border-radius: 10px;">
+                        </div>
+                        <button type="submit" style="border-radius: 5px;"><b>Sign In!</b></button>
+                    </form>
+            </div>
+        </div>
+    </div>
+    <div style="display: inline-flex; justify-content: space-around; width: auto;">
+        <!-- pic 1 -->
+        <div style="margin-right: 10px; margin-left: 20px;">
+            <img src="https://img.freepik.com/free-photo/young-women-taking-part-spinning-class_23-2149332067.jpg?w=900&t=st=1679550822~exp=1679551422~hmac=1dd6f1a8973cb8c3493be8c8c4749a60b99bca18e357c118284945b7bcecdc2e" width="300" height="250" alt="gym buddies">
+        </div>
+        <!-- pic 2 -->
+        <div style="margin-right: 10px;">
+            <img src="https://img.freepik.com/free-photo/young-sports-people-training-morning-gym_1157-32102.jpg?w=900&t=st=1679551484~exp=1679552084~hmac=e77685a18e2a89fdfcb5c975e1de226356f07d7cb49657ebc19d5dfa51f3c706" width="300" height="250" alt="gym buddies">
+        </div>
+        <!-- pic 3 -->
+        <div style="margin-right: 10px;">
+            <img src="https://img.freepik.com/free-photo/people-doing-outdoor-training_23-2149891438.jpg?w=900&t=st=1679552034~exp=1679552634~hmac=8a4b9bd2fae9d73479b429c071b088953754136edd5808c600406ef5921e76e6" width="300" height="250" alt="gym buddies">
+        </div>
+        <!-- pic 4 -->
+        <div style="margin-right: 10px;">
+            <img src="https://img.freepik.com/free-photo/close-up-team-hand-shake_23-2148905517.jpg?w=826&t=st=1679552003~exp=1679552603~hmac=1b168f1de927193447e378ac0046e53afd87dae35f2b21970102081d8a5f7a4a" width="300" height="250" alt="gym buddies">
+        </div>
+    </div>
+    <div>
+        <h1 style="color:rgb(116, 135, 129); font-family:fantasy; text-align: center; margin-top: 50px;">Find Gym Buddies in Your Local Area</h1>
+        <div style="display: inline-flex; margin-bottom: 50px;">
+            <h5 style="margin-left: 140px; margin-right: 20px;">~create a profile</h5>
+            <h5 style="margin-left: 50px; margin-right: 20px;">~connect with fellow gym buds</h5>
+            <h5 style="margin-left: 50px;">~create a more positive gym experience</h5>
+        </div>
+    </div>
+    <div>
+        <div style="height: 400px;" >
+            {% with messages = get_flashed_messages() %}
+            <!-- declare a variable called messages -->
+            {% if messages %}
+            <!-- check if there are any messages -->
+            {% for message in messages %}
+            <!-- loop through the messages -->
+            <p style="text-align: center; color: rgb(0, 0, 0)"><b>{{message}}</b></p> <!-- display each message in a paragraph tag -->
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <form action="/new-user" method="post">
+                <div class="signup-form" style="display: inline-flex; margin-bottom: 15px;">
+                <div style="margin-left: 160px;margin-right: 25px; width: 400px;">
+                <label for="first_name"><b>First Name</b></label>
+                <input type="text" name="first_name" class="form-control mt-2">
+                <label for="last_name"><b>Last name</b></label>
+                <input type="text" name="last_name" class="form-control mt-2">
+                <label for="email"><b>Email</b></label>
+                <input type="email" name="email" class="form-control mt-2">
+                </div>
+                <div style="width: 400px;margin-left: 100px;">
+                <label for="password"><b>Password</b></label>
+                <input type="password" name="password" class="form-control mt-2">
+                <label for="confirm_password"><b>Confirm Password</b></label>
+                <input type="password" name="confirm_password" class="form-control mt-2">
+                <label for="age"><b>Age</b></label>
+                <input type="number" name="age" class="form-control mt-2">
+                <button type="submit" class="btn btn-outline-primary" style="margin-top: 20px;"><b>Sign Up!</b></button>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

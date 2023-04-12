@@ -1,0 +1,7 @@
+Name: < Shaakira Ali >
+Stack: < Python >
+GitHub Repo link: < Put your GitHub repo link here >
+Project name: < Gym Buddies >
+Project description: < This is a website for gym enthusiasts who want to make friends with other gym enthusiasts. Let's people connect comfortably by choosing meet-ups based off their level of fitness/goals. >
+MVP (Minimum Viable Product) features: < The features you must have that should be built within the timeframe >
+Bonus feature(s): < See platform for ideas for bonus features - you must have at least one; this is meant to get you to look into next technologies and challenge yourself to grow as a developer >
